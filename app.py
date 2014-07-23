@@ -12,7 +12,7 @@ def hello():
 
 @app.route('/summary')
 def summary():
-    games = r.smembers('knoxville-games')
+    games = r.lrange('knoxville-games-list', 0, 100)
     print games
     return render_template('summary.html', games=list(games))
 
@@ -29,7 +29,7 @@ def result():
     data.append(request.form['btime'])
     data.append(request.form['comments'])
     st = '|'.join(data)
-    r.sadd('knoxville-games', st)
+    r.rpush('knoxville-games-list', st)
     return "OK"
 
 if __name__ == "__main__":
