@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, redirect, url_for
 import redis
 from datetime import datetime
 from time import strftime
@@ -7,11 +7,11 @@ r = redis.Redis(host='localhost', port=6379, db=3)
 app = Flask(__name__)
 
 @app.route('/')
-def hello_world():
-    return 'Index Page'
+def hello():
+    return redirect(url_for('summary'))
 
 @app.route('/summary')
-def hello():
+def summary():
     games = r.smembers('knoxville-games')
     print games
     return render_template('summary.html', games=list(games))
