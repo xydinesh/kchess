@@ -3,7 +3,11 @@ import redis
 from datetime import datetime
 from time import strftime
 from pytz import timezone
-r = redis.Redis(host='localhost', port=6379, db=3)
+
+redis_addr = os.environ.get('SERVER_PORT_6379_TCP_ADDR', 'localhost')
+redis_port = os.environ.get('SERVER_PORT_6379_TCP_PORT', 6379)
+
+r = redis.Redis(host=redis_addr, port=redis_port, db=3)
 app = Flask(__name__)
 
 @app.route('/')
