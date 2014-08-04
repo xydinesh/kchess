@@ -1,0 +1,28 @@
+﻿{% extends "layout.html" %}
+
+{%block content %}
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Record Time</th>
+                <th>White</th>
+                <th>Black</th>
+                <th>Result</th>
+                <th>White Time</th>
+                <th>Black Time</th>
+                <th>Notes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                {% for game in games %}
+                    {% for g in game.split('|') %}
+                    <td> {{ g }} </td>
+                    {% endfor %}
+                {% endfor %}
+            </tr>       
+        </tbody>
+    </table>
+</div>
+{% endblock %}
