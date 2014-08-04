@@ -1,0 +1,23 @@
+<head>
+    <title>Summary</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <style type="text/css">
+      .container {
+        max-width: 1000px;
+        padding-top: 60px;
+      }
+    </style>
+  </head>
+<ul class="nav navbar-nav">
+  <li><a href="/">Home</a></li>
+  <li><a href="summary">Summary</a></li>
+</ul>
+<div class="container"> 
+<ul>
+{% for game in games %}
+ <li> {{ game.split('|') }} </li>
+{% endfor %}
+</ul>
+</div>
+</html>
