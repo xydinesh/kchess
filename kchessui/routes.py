@@ -1,6 +1,16 @@
+import redis
+import os
 from datetime import datetime
-from flask import render_template
+from time import strftime
+from pytz import timezone
+from datetime import datetime
+from flask import request, render_template, redirect, url_for
 from app import app
+
+redis_addr = os.environ.get('SERVER_PORT_6379_TCP_ADDR', '192.168.59.103')
+redis_port = os.environ.get('SERVER_PORT_6379_TCP_PORT', 6379)
+
+r = redis.Redis(host=redis_addr, port=redis_port, db=3)
 
 @app.route('/')
 @app.route('/home')
@@ -48,6 +58,6 @@ def result():
     data.append(request.form['btime'])
     data.append(request.form['comments'])
     st = '|'.join(data)
-    r.rpush('knoxville-games-list', st)
+    r.rpush('knoxville-games-list', st) 
     return "OK"
 
