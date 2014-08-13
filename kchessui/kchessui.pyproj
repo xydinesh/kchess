@@ -37,11 +37,17 @@
     <Folder Include="static\" />
     <Folder Include="static\content\" />
     <Folder Include="static\fonts\" />
+    <Folder Include="static\build\" />
+    <Folder Include="static\src\" />
     <Folder Include="static\scripts\" />
     <Folder Include="templates\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="requirements.txt" />
+    <Content Include="static\build\JSXTransformer.js" />
+    <Content Include="static\build\react-with-addons.js" />
+    <Content Include="static\build\react-with-addons.min.js" />
+    <Content Include="static\build\react.min.js" />
     <Content Include="static\content\bootstrap.css" />
     <Content Include="static\content\bootstrap.min.css" />
     <Content Include="static\content\site.css" />
@@ -60,14 +66,19 @@
     <Content Include="static\scripts\jquery.validate.min.js" />
     <Content Include="static\scripts\jquery.validate.unobtrusive.js" />
     <Content Include="static\scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="static\src\JSXTransformer.js" />
+    <Content Include="static\src\kchess.js" />
     <Content Include="static\scripts\modernizr-2.6.2.js" />
     <Content Include="static\scripts\respond.js" />
     <Content Include="static\scripts\respond.min.js" />
     <Content Include="static\scripts\_references.js" />
+    <Content Include="static\src\modernizr-2.6.2.js" />
+    <Content Include="static\build\react.js" />
     <Content Include="templates\about.html" />
     <Content Include="templates\contact.html" />
     <Content Include="templates\index.html" />
     <Content Include="templates\layout.html" />
+    <Content Include="templates\report.html" />
     <Content Include="templates\summary.html" />
   </ItemGroup>
   <ItemGroup>

@@ -15,13 +15,13 @@
             </tr>
         </thead>
         <tbody>
+            {% for game in games %}
             <tr>
-                {% for game in games %}
-                    {% for g in game.split('|') %}
-                    <td> {{ g }} </td>
-                    {% endfor %}
+                {% for g in game.split('|') %}
+                <td> {{ g }} </td>
                 {% endfor %}
-            </tr>       
+            </tr>
+            {% endfor %}
         </tbody>
     </table>
 </div>

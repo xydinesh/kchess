@@ -42,7 +42,6 @@ def about():
 @app.route('/summary')
 def summary():
     games = r.lrange('knoxville-games-list', 0, 100)
-    print games
     return render_template('summary.html', games=list(games))
 
 @app.route('/game/result', methods=['POST'])
@@ -59,5 +58,9 @@ def result():
     data.append(request.form['comments'])
     st = '|'.join(data)
     r.rpush('knoxville-games-list', st) 
+    print st
     return "OK"
 
+@app.route('/report')
+def report():
+    return render_template('report.html')
