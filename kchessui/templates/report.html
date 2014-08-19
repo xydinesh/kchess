@@ -1,10 +1,24 @@
 ﻿{% extends "layout.html" %}
 
 {%block content %}
-<div id="content"></div>
-<script src="/static/build/kchess.js"></script>
-{% endblock %}
+<div class="col-lg-offset-2">
+    <form>
+        <div class="form-group">
+            <label for="white">White</label>
+            <input type="text" class="form-control" id="white" placeholder="white" />
+            <label for="black">Black</label>
+            <input type="text" class="form-control" id="black" placeholder="black" />
+            <label for="black">Result</label>
+            <input type="text" class="form-control" placeholder="result" id="result" />
+            <label for="wtime">White time</label>
+            <input type="text" class="form-control" placeholder="White Time" id="wtime" />
+            <label for="btime">Black time</label>
+            <input type="text" class="form-control" placeholder="Black Time" id="btime" />
+        </div>
+        <button type="submit" class="btn btn-primary">
+            Submit
+        </button>
+    </form>
+</div>
 
-{%block scripts %}
-<script src="/static/build/react.min.js"></script>
 {% endblock %}
