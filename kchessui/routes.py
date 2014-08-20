@@ -46,6 +46,7 @@ def summary():
 
 @app.route('/game/result', methods=['POST'])
 def result():
+    print request.form
     data = []
     fmt = "%Y-%m-%d %H:%M"
     now_time = datetime.now(timezone('US/Eastern'))
@@ -55,11 +56,11 @@ def result():
     data.append(request.form['result'])
     data.append(request.form['wtime'])
     data.append(request.form['btime'])
-    data.append(request.form['comments'])
+    # data.append(request.form['comments'])
     st = '|'.join(data)
     r.rpush('knoxville-games-list', st) 
     print st
-    return "OK"
+    return redirect(url_for('home'), code=302)
 
 @app.route('/report')
 def report():

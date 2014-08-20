@@ -2,23 +2,43 @@
 
 {%block content %}
 <div class="col-lg-offset-2">
-    <form>
-        <div class="form-group">
+    <form id="add-result-form" action="/game/result" method="post" name="form-result">
+        <div class="modal-body">
             <label for="white">White</label>
-            <input type="text" class="form-control" id="white" placeholder="white" />
+            <input type="text" class="form-control" name="white" id="white" placeholder="white" />
             <label for="black">Black</label>
-            <input type="text" class="form-control" id="black" placeholder="black" />
+            <input type="text" class="form-control" name="black" id="black" placeholder="black" />
             <label for="black">Result</label>
-            <input type="text" class="form-control" placeholder="result" id="result" />
+            <input type="text" class="form-control" placeholder="result" name="result" id="result" />
             <label for="wtime">White time</label>
-            <input type="text" class="form-control" placeholder="White Time" id="wtime" />
+            <input type="text" class="form-control" placeholder="White Time" name="wtime" id="wtime" />
             <label for="btime">Black time</label>
-            <input type="text" class="form-control" placeholder="Black Time" id="btime" />
-        </div>
-        <button type="submit" class="btn btn-primary">
-            Submit
-        </button>
+            <input type="text" class="form-control" placeholder="Black Time" name="btime" id="btime" />
+            </div>
+            <button type="submit" value="submit" class="btn btn-primary">
+                Submit
+            </button>
+        
     </form>
 </div>
+<script src="/static/scripts/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('add-result-form').on('submit', function (e) {
+            e.defaultPrevented;
+            $.ajax({
+                url: "/game/result/",
+                type: "POST",
+                data: $('add-result-form').serialize(),
+                success: function (data) {
+                    alert("Successfully submitted.")
+                },
+                error: function (xhr, status, errorThorwn) {
+                    alert(status)
+                }
+            });
+        });
+    });
+</script>
 
 {% endblock %}
