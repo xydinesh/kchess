@@ -31,10 +31,10 @@
                 type: "POST",
                 data: $('add-result-form').serialize(),
                 success: function (data) {
-                    alert("Successfully submitted.")
+                    console.debug("Successfully submitted.")
                 },
                 error: function (xhr, status, errorThorwn) {
-                    alert(status)
+                    console.debug(status)
                 }
             });
         });

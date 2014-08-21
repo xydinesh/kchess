@@ -1,0 +1,40 @@
+﻿{% extends "layout.html" %}
+
+{%block content %}
+<div class="col-lg-offset-2">
+    <form id="signup-form" action="/user/signup" method="post" name="form-signup">
+        <div class="modal-body">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" name="username" id="username" placeholder="username" />
+            <label for="email">Email</label>
+            <input type="text" class="form-control" name="email" id="email" placeholder="email" />
+            <label for="name">Name</label>
+            <input type="text" class="form-control" placeholder="name" name="name" id="name" />
+        </div>
+            <button type="submit" value="submit" class="btn btn-primary">
+                Submit
+            </button>
+        
+    </form>
+</div>
+<script src="/static/scripts/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('signup-form').on('submit', function (e) {
+            e.defaultPrevented;
+            $.ajax({
+                url: "/user/signup",
+                type: "POST",
+                data: $('signup-form').serialize(),
+                success: function (data) {
+                    console.debug("Successfully submitted.")
+                },
+                error: function (xhr, status, errorThorwn) {
+                    console.debug(status)
+                }
+            });
+        });
+    });
+</script>
+
+{% endblock %}
