@@ -5,7 +5,7 @@ from datetime import datetime
 
 from flask import request, render_template, redirect, url_for
 from app import app
-from models import db, User
+from models import User
 
 redis_addr = os.environ.get('SERVER_PORT_6379_TCP_ADDR', '192.168.59.103')
 redis_port = os.environ.get('SERVER_PORT_6379_TCP_PORT', 6379)

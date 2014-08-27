@@ -1,15 +1,9 @@
 from flask import Flask
-from flask.ext.sqlalchemy import SQLAlchemy
+from kchessui import db
 
 from time import strftime
 from pytz import timezone
 from datetime import datetime
-
-from app import app
-
-# postgresql://scott:tiger@localhost/mydatabase
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://docker:docker@192.168.59.103:5432/docker'
-db = SQLAlchemy(app)
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -32,10 +26,10 @@ class User(db.Model):
 class Result(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     rec_time = db.Column(db.DateTime)
-    white_id = db.Column(db.Integer, db.ForeignKey('category.id'))
+    white_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     white = db.relationship('User',
         backref=db.backref('results', lazy='dynamic'))
-    black_id = db.Column(db.Integer, db.ForeignKey('category.id'))
+    black_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     black = db.relationship('User',
         backref=db.backref('results', lazy='dynamic'))
     result = db.Column(db.Integer)
