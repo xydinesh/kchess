@@ -10,9 +10,11 @@ class User(db.Model):
     username = db.Column(db.String(80), unique=True)
     name = db.Column(db.String(120))
     email = db.Column(db.String(120), unique=True)
+    password = db.Column(db.String(20))
     
-    def __init__(self, username, name=None, email=None):
+    def __init__(self, username, password, name=None, email=None):
         self.username = username
+        self.password = password
         if name is not None:
             self.name = name
 

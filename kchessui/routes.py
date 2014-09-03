@@ -77,9 +77,19 @@ def user_signup():
     username = request.form.get('username')
     email = request.form.get('email')
     name = request.form.get('name')
-    print username, email, name
+    user = User(username=username, name=name, email=email)
+    if user is not None:
+        db.session.add(user)
+        db.session.commit()
+    flash('User added successfully')
     return redirect(url_for('home'), code=302)
     
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'GET':
+        return render_template('login.html',
+                               year = datetime.now().year)
+    return redirect(url_for('home'))
 
 @app.route('/signup')
 def signup():
