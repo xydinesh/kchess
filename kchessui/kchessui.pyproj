@@ -83,6 +83,7 @@
     <Content Include="templates\contact.html" />
     <Content Include="templates\index.html" />
     <Content Include="templates\layout.html" />
+    <Content Include="templates\login.html" />
     <Content Include="templates\signup.html" />
     <Content Include="templates\report.html" />
     <Content Include="templates\summary.html" />
