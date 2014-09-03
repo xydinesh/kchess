@@ -1,5 +1,6 @@
 from flask import Flask
 from flask.ext.sqlalchemy import SQLAlchemy
+from flask.ext.login import LoginManager
 
 # If you get an error on the next line on Python 3.4.0, change to: Flask('app')
 # where app matches the name of this file without the .py extension.
@@ -8,8 +9,15 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://docker:docker@192.168.59.1
 app.config['SECRET_KEY'] ='xxxxxxxxarseintaorsnetia astaorsitnarosetni'
 db = SQLAlchemy(app)
 
-from kchessui.routes import *
-from kchessui.models import *
+login_manager = LoginManager()
+login_manager.init_app(app)
 
 # Make the WSGI interface available at the top level so wfastcgi can get it.
 wsgi_app = app
+
+
+from kchessui.routes import *
+from kchessui.models import *
+
+
+

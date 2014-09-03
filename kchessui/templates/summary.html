@@ -17,9 +17,13 @@
         <tbody>
             {% for game in games %}
             <tr>
-                {% for g in game.split('|') %}
-                <td> {{ g }} </td>
-                {% endfor %}
+                <td>{{ game.rec_time }}</td>
+                <td>{{ game.white }}</td>
+                <td>{{ game.black }}</td>
+                <td>{{ game.result }}</td>
+                <td>{{ game.wtime }}</td>
+                <td>{{ game.btime }}</td>
+                <td>{{ game.notes }}</td>
             </tr>
             {% endfor %}
         </tbody>

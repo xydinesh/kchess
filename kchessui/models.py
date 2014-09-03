@@ -10,7 +10,7 @@ class User(db.Model):
     username = db.Column(db.String(80), unique=True)
     name = db.Column(db.String(120))
     email = db.Column(db.String(120), unique=True)
-
+    
     def __init__(self, username, name=None, email=None):
         self.username = username
         if name is not None:
@@ -26,12 +26,8 @@ class User(db.Model):
 class Result(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     rec_time = db.Column(db.DateTime)
-    white_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    white = db.relationship('User',
-        backref=db.backref('results', lazy='dynamic'))
-    black_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    black = db.relationship('User',
-        backref=db.backref('results', lazy='dynamic'))
+    white_id = db.Column(db.Integer, db.ForeignKey('user.id'))  
+    black_id = db.Column(db.Integer, db.ForeignKey('user.id'))   
     result = db.Column(db.Integer)
     wtime = db.Column(db.String(8))
     btime = db.Column(db.String(8))

@@ -1,16 +1,17 @@
-import redis
 import os
 
 from datetime import datetime
 
 from flask import request, render_template, redirect, url_for
-from app import app
-from models import User
+from kchessui.models import *
+from kchessui import app, db, login_manager
 
-redis_addr = os.environ.get('SERVER_PORT_6379_TCP_ADDR', '192.168.59.103')
-redis_port = os.environ.get('SERVER_PORT_6379_TCP_PORT', 6379)
+login_manager.login_view = 'login'
 
-r = redis.Redis(host=redis_addr, port=redis_port, db=3)
+@login_manager.user_loader
+def load_user(id):
+    return User.query.get(int(id))
+
 
 @app.route('/')
 @app.route('/home')
@@ -41,8 +42,8 @@ def about():
 
 @app.route('/summary')
 def summary():
-    games = r.lrange('knoxville-games-list', 0, 100)
-    return render_template('summary.html', games=list(games), year = datetime.now().year)
+    results = Result.query.all()
+    return render_template('summary.html', games=results, year = datetime.now().year)
 
 @app.route('/game/result', methods=['POST'])
 def result():
@@ -63,7 +64,7 @@ def result():
 
     # data.append(request.form['comments'])
     st = '|'.join(data)
-    r.rpush('knoxville-games-list', st) 
+    print st
     return redirect(url_for('home'), code=302)
 
 @app.route('/report')
