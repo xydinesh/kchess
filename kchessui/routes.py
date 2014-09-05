@@ -4,7 +4,7 @@ from datetime import datetime
 
 from flask import request, render_template, redirect, url_for, flash
 from kchessui.models import *
-from kchessui import app, db, login_manager
+from kchessui import app, db, login_manager, login_required, login_user, logout_user
 
 login_manager.login_view = 'login'
 
@@ -68,6 +68,7 @@ def result():
     return redirect(url_for('home'), code=302)
 
 @app.route('/report')
+@login_required
 def report():
     return render_template('report.html', 
                            year = datetime.now().year)
@@ -90,9 +91,24 @@ def login():
     if request.method == 'GET':
         return render_template('login.html',
                                year = datetime.now().year)
-    return redirect(url_for('home'))
-
+    username = request.form.get('username')
+    password = request.form.get('password')
+    user = User.query.filter_by(username=username, password=password).first()
+    if user is None:
+        flash('Invalid username or password')
+        return render_template('login.html', 
+                               year = datetime.now().year)
+    flash('Login successful')
+    login_user(user)
+    return redirect(request.args.get('next') or url_for('home'))
+ 
 @app.route('/signup')
 def signup():
     return render_template('signup.html',                          
                            year = datetime.now().year)
+
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('home'))
