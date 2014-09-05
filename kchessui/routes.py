@@ -2,7 +2,7 @@ import os
 
 from datetime import datetime
 
-from flask import request, render_template, redirect, url_for
+from flask import request, render_template, redirect, url_for, flash
 from kchessui.models import *
 from kchessui import app, db, login_manager
 
@@ -77,7 +77,8 @@ def user_signup():
     username = request.form.get('username')
     email = request.form.get('email')
     name = request.form.get('name')
-    user = User(username=username, name=name, email=email)
+    password = request.form.get('password')
+    user = User(username=username, password=password, name=name, email=email)
     if user is not None:
         db.session.add(user)
         db.session.commit()
