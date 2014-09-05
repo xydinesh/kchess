@@ -51,10 +51,10 @@ def result():
     notes = request.form.get('notes')
     
     result = Result(white=white, black=black, result=result, wtime=wtime, btime=btime, notes=notes)
-
-     # data.append(request.form['comments'])
-    st = '|'.join(data)
-    print st
+    if result is not None:
+        db.session.add(result)
+        db.session.commit()
+    flash ('Report successful')
     return redirect(url_for('home'), code=302)
 
 @app.route('/report')
