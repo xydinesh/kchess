@@ -2,9 +2,9 @@ import os
 
 from datetime import datetime
 
-from flask import request, render_template, redirect, url_for, flash
+from flask import request, render_template, redirect, url_for, flash, g
 from kchessui.models import *
-from kchessui import app, db, login_manager, login_required, login_user, logout_user
+from kchessui import *
 
 login_manager.login_view = 'login'
 
@@ -12,6 +12,9 @@ login_manager.login_view = 'login'
 def load_user(id):
     return User.query.get(int(id))
 
+@app.before_request
+def before_request():
+    g.user = current_user
 
 @app.route('/')
 @app.route('/home')
@@ -22,47 +25,34 @@ def home():
         year = datetime.now().year,
     )
 
-@app.route('/contact')
-def contact():
-    return render_template(
-        'contact.html',
-        title = 'Contact',
-        year = datetime.now().year,
-        message = 'Your contact page.'
-    )
-
-@app.route('/about')
-def about():
-    return render_template(
-        'about.html',
-        title = 'About',
-        year = datetime.now().year,
-        message = 'Your application description page.'
-    )
-
 @app.route('/summary')
+@login_required
 def summary():
     results = Result.query.all()
     return render_template('summary.html', games=results, year = datetime.now().year)
 
 @app.route('/game/result', methods=['POST'])
+@login_required
 def result():
-    data = []
-    fmt = "%Y-%m-%d %H:%M"
-    now_time = datetime.now(timezone('US/Eastern'))
-    data.append(now_time.strftime(fmt))
-    data.append(request.form['white'])
-    data.append(request.form['black'])
-    data.append(request.form['result'])
-    data.append(request.form['wtime'])
-    data.append(request.form['btime'])
+    white = request.form.get('white')
+    if white is None:
+        raise Exception('White player name missing')
 
-    user = User.query.filter_by(username=request.form.get('white')).first()
-    if user is None:
-        db.session.add(User(username=request.form.get('white')))
-        db.session.commit()
+    black = request.form.get('black')
+    if black is None:
+        raise BaseException('Black player name missing')
 
-    # data.append(request.form['comments'])
+    result = request.form.get('result')
+    if result is None:
+        raise Exception('Invalid result')
+
+    wtime = request.form.get('wtime')
+    btime = request.form.get('btime')
+    notes = request.form.get('notes')
+    
+    result = Result(white=white, black=black, result=result, wtime=wtime, btime=btime, notes=notes)
+
+     # data.append(request.form['comments'])
     st = '|'.join(data)
     print st
     return redirect(url_for('home'), code=302)

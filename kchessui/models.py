@@ -47,16 +47,22 @@ class Result(db.Model):
     btime = db.Column(db.String(8))
     notes = db.Column(db.String(140))
 
-    def __init__(self, white, black, result, wtime, btime, rec_time=None, notes=None):
+    def __init__(self, white, black, result, wtime=None, btime=None, notes=None):
         self.white = white
         self.black = black
         self.result = result
         self.wtime = wtime
+        self.notes = notes
+        if wtime is None:
+            self.wtime = '0:00'
+
         self.btime = btime
-        if rec_time is None:
-            rec_time = datetime.now(timezone('US/Eastern'))
-        if notes is not None:
-            self.notes = notes
+        if btime is None:
+            self.btime = '0:00'
+      
+        fmt = "%Y-%m-%d %H:%M"
+        now_time = datetime.now(timezone('US/Eastern'))
+        self.rec_time = now_time.strftime(fmt)         
 
     def __repr__(self):
         return '<Result %r %r %r>' % (self.white, self.black, self.result)
