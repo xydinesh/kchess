@@ -7,8 +7,7 @@
     <ProjectGuid>ff17252a-e3c8-4f72-8420-7d5768127d41</ProjectGuid>
     <ProjectHome>.</ProjectHome>
     <ProjectTypeGuids>{789894c7-04a9-4a11-a6b5-3f4435165112};{1b580a1a-fdb3-4b32-83e1-6407eb2722e6};{349c5851-65df-11da-9384-00065b846f21};{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
-    <StartupFile>
-    </StartupFile>
+    <StartupFile>runserver.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -21,6 +20,7 @@
     <IsWindowsApplication>False</IsWindowsApplication>
     <InterpreterId>{823478df-2bc6-3149-90e0-6f3e0282dc82}</InterpreterId>
     <InterpreterVersion>2.7</InterpreterVersion>
+    <NameOfLastUsedPublishProfile>kchess - Web Deploy</NameOfLastUsedPublishProfile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,10 +31,16 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="config.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="models.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="routes.py" />
+    <Compile Include="runserver.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="__init__.py">
       <SubType>Code</SubType>
     </Compile>
@@ -49,6 +55,8 @@
     <Folder Include="templates\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="kchess - Web Deploy.pubxml" />
+    <None Include="kchess - FTP.pubxml" />
     <Content Include="requirements.txt" />
     <Content Include="static\build\kchess.js" />
     <Content Include="static\build\react-with-addons.js" />
