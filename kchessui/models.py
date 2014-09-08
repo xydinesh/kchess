@@ -6,6 +6,8 @@ from pytz import timezone
 from datetime import datetime
 
 class User(db.Model):
+    __tablename__ = 'users'
+
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True)
     name = db.Column(db.String(120))
@@ -38,14 +40,20 @@ class User(db.Model):
 
 
 class Result(db.Model):
+    __tablename__ = 'results'
+
     id = db.Column(db.Integer, primary_key=True)
-    rec_time = db.Column(db.DateTime)
-    white_id = db.Column(db.Integer, db.ForeignKey('user.id'))  
-    black_id = db.Column(db.Integer, db.ForeignKey('user.id'))   
+    rec_time = db.Column(db.DateTime) 
     result = db.Column(db.Integer)
     wtime = db.Column(db.String(8))
     btime = db.Column(db.String(8))
     notes = db.Column(db.String(140))
+    white = db.Column(db.String(20), db.ForeignKey('users.username'))
+    black = db.Column(db.String(20), db.ForeignKey('users.username'))
+    white_player = db.relationship("User",
+                         primaryjoin="Result.white==User.username")
+    black_player = db.relationship("User",
+                         primaryjoin="Result.black==User.username")
 
     def __init__(self, white, black, result, wtime=None, btime=None, notes=None):
         self.white = white

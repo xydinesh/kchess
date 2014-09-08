@@ -18,8 +18,8 @@
             {% for game in games %}
             <tr>
                 <td>{{ game.rec_time }}</td>
-                <td>{{ game.white }}</td>
-                <td>{{ game.black }}</td>
+                <td>{{ game.white_player.name }}</td>
+                <td>{{ game.black_player.name }}</td>
                 <td>{{ game.result }}</td>
                 <td>{{ game.wtime }}</td>
                 <td>{{ game.btime }}</td>
