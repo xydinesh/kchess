@@ -2,7 +2,7 @@ from flask.ext.script import Manager
 from flask.ext.migrate import Migrate, MigrateCommand
 import sys
 
-from kchessui.kchess import db, app
+from kchess import db, app
 
 migrate = Migrate(app, db)
 manager = Manager(app)
