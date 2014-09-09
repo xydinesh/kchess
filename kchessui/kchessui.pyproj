@@ -7,7 +7,7 @@
     <ProjectGuid>ff17252a-e3c8-4f72-8420-7d5768127d41</ProjectGuid>
     <ProjectHome>.</ProjectHome>
     <ProjectTypeGuids>{789894c7-04a9-4a11-a6b5-3f4435165112};{1b580a1a-fdb3-4b32-83e1-6407eb2722e6};{349c5851-65df-11da-9384-00065b846f21};{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
-    <StartupFile>__init__.py</StartupFile>
+    <StartupFile>runserver.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -18,7 +18,7 @@
     <Name>kchessui</Name>
     <RootNamespace>kchessui</RootNamespace>
     <IsWindowsApplication>False</IsWindowsApplication>
-    <InterpreterId>{823478df-2bc6-3149-90e0-6f3e0282dc82}</InterpreterId>
+    <InterpreterId>{afe82a4e-a10f-488a-9655-9de2c5208b35}</InterpreterId>
     <InterpreterVersion>2.7</InterpreterVersion>
     <NameOfLastUsedPublishProfile>kchess - Web Deploy</NameOfLastUsedPublishProfile>
   </PropertyGroup>
@@ -31,73 +31,80 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="config.py">
+    <Compile Include="kchess\models.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="models.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="routes.py" />
+    <Compile Include="kchess\routes.py" />
     <Compile Include="runserver.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="__init__.py">
+    <Compile Include="kchess\__init__.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="static\" />
-    <Folder Include="static\content\" />
-    <Folder Include="static\fonts\" />
-    <Folder Include="static\build\" />
-    <Folder Include="static\src\" />
-    <Folder Include="static\scripts\" />
-    <Folder Include="templates\" />
+    <Folder Include="kchess\" />
+    <Folder Include="kchess\static\" />
+    <Folder Include="kchess\static\build\" />
+    <Folder Include="kchess\static\content\" />
+    <Folder Include="kchess\static\fonts\" />
+    <Folder Include="kchess\static\scripts\" />
+    <Folder Include="kchess\static\src\" />
+    <Folder Include="kchess\templates\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="kchess - Web Deploy.pubxml" />
     <None Include="kchess - FTP.pubxml" />
+    <Content Include="kchess\static\build\react-with-addons.js" />
+    <Content Include="kchess\static\build\react-with-addons.min.js" />
+    <Content Include="kchess\static\build\react.js" />
+    <Content Include="kchess\static\build\react.min.js" />
+    <Content Include="kchess\static\content\bootstrap.css" />
+    <Content Include="kchess\static\content\bootstrap.min.css" />
+    <Content Include="kchess\static\content\site.css" />
+    <Content Include="kchess\static\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="kchess\static\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="kchess\static\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="kchess\static\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="kchess\static\scripts\bootstrap.js" />
+    <Content Include="kchess\static\scripts\bootstrap.min.js" />
+    <Content Include="kchess\static\scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="kchess\static\scripts\jquery-1.10.2.js" />
+    <Content Include="kchess\static\scripts\jquery-1.10.2.min.js" />
+    <Content Include="kchess\static\scripts\jquery-1.10.2.min.map" />
+    <Content Include="kchess\static\scripts\jquery.validate-vsdoc.js" />
+    <Content Include="kchess\static\scripts\jquery.validate.js" />
+    <Content Include="kchess\static\scripts\jquery.validate.min.js" />
+    <Content Include="kchess\static\scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="kchess\static\scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="kchess\static\scripts\modernizr-2.6.2.js" />
+    <Content Include="kchess\static\scripts\respond.js" />
+    <Content Include="kchess\static\scripts\respond.min.js" />
+    <Content Include="kchess\static\scripts\_references.js" />
+    <Content Include="kchess\static\src\kchess.js" />
+    <Content Include="kchess\static\src\p.js" />
     <Content Include="requirements.txt" />
-    <Content Include="static\build\kchess.js" />
-    <Content Include="static\build\react-with-addons.js" />
-    <Content Include="static\build\react-with-addons.min.js" />
-    <Content Include="static\build\react.js" />
-    <Content Include="static\build\react.min.js" />
-    <Content Include="static\content\bootstrap.css" />
-    <Content Include="static\content\bootstrap.min.css" />
-    <Content Include="static\content\site.css" />
-    <Content Include="static\fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="static\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="static\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="static\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="static\scripts\bootstrap.js" />
-    <Content Include="static\scripts\bootstrap.min.js" />
-    <Content Include="static\scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="static\scripts\jquery-1.10.2.js" />
-    <Content Include="static\scripts\jquery-1.10.2.min.js" />
-    <Content Include="static\scripts\jquery-1.10.2.min.map" />
-    <Content Include="static\scripts\jquery.validate-vsdoc.js" />
-    <Content Include="static\scripts\jquery.validate.js" />
-    <Content Include="static\scripts\jquery.validate.min.js" />
-    <Content Include="static\scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="static\scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="static\src\p.js" />
-    <Content Include="static\src\kchess.js" />
-    <Content Include="static\scripts\modernizr-2.6.2.js" />
-    <Content Include="static\scripts\respond.js" />
-    <Content Include="static\scripts\respond.min.js" />
-    <Content Include="static\scripts\_references.js" />
-    <Content Include="templates\about.html" />
-    <Content Include="templates\contact.html" />
-    <Content Include="templates\index.html" />
-    <Content Include="templates\layout.html" />
-    <Content Include="templates\login.html" />
-    <Content Include="templates\signup.html" />
-    <Content Include="templates\report.html" />
-    <Content Include="templates\summary.html" />
+    <Content Include="kchess\templates\about.html" />
+    <Content Include="kchess\templates\contact.html" />
+    <Content Include="kchess\templates\index.html" />
+    <Content Include="kchess\templates\layout.html" />
+    <Content Include="kchess\templates\login.html" />
+    <Content Include="kchess\templates\signup.html" />
+    <Content Include="kchess\templates\report.html" />
+    <Content Include="kchess\templates\summary.html" />
   </ItemGroup>
   <ItemGroup>
-    <InterpreterReference Include="{823478df-2bc6-3149-90e0-6f3e0282dc82}\2.7" />
+    <Interpreter Include="env\">
+      <Id>{afe82a4e-a10f-488a-9655-9de2c5208b35}</Id>
+      <BaseInterpreter>{823478df-2bc6-3149-90e0-6f3e0282dc82}</BaseInterpreter>
+      <Version>2.7</Version>
+      <Description>env (Enthought Canopy (2.7 64-bit))</Description>
+      <InterpreterPath>Scripts\python.exe</InterpreterPath>
+      <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
+      <LibraryPath>Lib\</LibraryPath>
+      <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
+      <Architecture>Amd64</Architecture>
+    </Interpreter>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Web.targets" />
   <!-- Specify pre- and post-build commands in the BeforeBuild and 

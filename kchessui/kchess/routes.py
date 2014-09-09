@@ -3,8 +3,8 @@ import os
 from datetime import datetime
 
 from flask import request, render_template, redirect, url_for, flash, g
-from kchessui.models import *
-from kchessui import *
+from kchess.models import *
+from kchess import *
 
 login_manager.login_view = 'login'
 

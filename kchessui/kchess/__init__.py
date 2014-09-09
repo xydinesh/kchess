@@ -17,8 +17,8 @@ login_manager.init_app(app)
 wsgi_app = app
 
 
-from kchessui.routes import *
-from kchessui.models import *
+from kchess.routes import *
+from kchess.models import *
 
 
 

@@ -1,5 +1,5 @@
 from flask import Flask
-from kchessui import db
+from kchess import db
 
 from time import strftime
 from pytz import timezone
