@@ -47,8 +47,8 @@ class Result(db.Model):
     wtime = db.Column(db.String(8))
     btime = db.Column(db.String(8))
     notes = db.Column(db.String(140))
-    white = db.Column(db.String(20), db.ForeignKey('users.username'))
-    black = db.Column(db.String(20), db.ForeignKey('users.username'))
+    white = db.Column(db.String(80), db.ForeignKey('users.username'))
+    black = db.Column(db.String(80), db.ForeignKey('users.username'))
     white_player = db.relationship("User", primaryjoin="Result.white==User.username")
     black_player = db.relationship("User", primaryjoin="Result.black==User.username")
 
