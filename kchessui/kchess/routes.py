@@ -34,6 +34,7 @@ def summary():
 @app.route('/game/result', methods=['POST'])
 @login_required
 def result():
+    print request.form
     white = request.form.get('white')
     if white is None:
         raise Exception('White player name missing')

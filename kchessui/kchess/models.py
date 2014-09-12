@@ -43,7 +43,7 @@ class Result(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     rec_time = db.Column(db.DateTime)
-    result = db.Column(db.Integer)
+    result = db.Column(db.String(10))
     wtime = db.Column(db.String(8))
     btime = db.Column(db.String(8))
     notes = db.Column(db.String(140))
