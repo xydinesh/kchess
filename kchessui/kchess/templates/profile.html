@@ -1,22 +1,38 @@
 ﻿{% extends "layout.html" %}
 
 {%block content %}
-<div class="col-lg-offset-2">
-    <form id="password-form" action="/change_password" method="post" name="form-signup">
-        <div class="modal-body">
-            <label for="password">Old Password</label>
-            <input type="password" class="form-control" name="old_password" id="old_password" placeholder="old password" />
-            <label for="password">New Password</label>
-            <input type="password" class="form-control" name="new_password" id="new_password" placeholder="new password" />
-            <label for="password">Confirm Password</label>
-            <input type="password" class="form-control" name="confirm_password" id="confirm_password" placeholder="confirm password" />
-        </div>
-        <button type="submit" value="submit" class="btn btn-primary">
-            Submit
-        </button>
-
-    </form>
+<div class="col-md-4">
+<h5>Change Password</h5>
+        <form id="password-form" action="/change_password" method="post" name="form-signup">
+            <div class="modal-body">
+                <label for="password">Old Password</label>
+                <input type="password" class="form-control" name="old_password" id="old_password" placeholder="old password" />
+                <label for="password">New Password</label>
+                <input type="password" class="form-control" name="new_password" id="new_password" placeholder="new password" />
+                <label for="password">Confirm Password</label>
+                <input type="password" class="form-control" name="confirm_password" id="confirm_password" placeholder="confirm password" />
+            </div>
+            <button type="submit" value="submit" class="btn btn-primary">
+                Submit
+            </button>
+        </form>
 </div>
+<div class="col-md-4">
+    <h5>Game Stats</h5>
+    <img src="http://videogames.procon.org/files/esademographic.jpg" width="50%"/>
+</div>
+<div class="col-md-4">
+    <h5>Notes</h5>
+    <p>Fabiano Caruana, an Italian born in Miami, won the first seven games and finished the six-player double-round robin tournament three points ahead of the world champion Magnus Carlsen. It was one of the best results in chess history and it earned Caruana $100,000 first prize.</p>
+    <p>Sinquefield Cup, Saint Louis, August 27-September 6, 2014</p>
+    <img src="http://images.huffingtonpost.com/2014-09-07-Cupstandingsfinal-thumb.jpg"/>
+    <form action="http://www.huffingtonpost.com/lubomir-kavalek/caruanas-spectacular-ches_b_5778658.html">
+        <button class="btn btn-success" type="submit">Read more</button>
+    </form>
+       
+</div>
+
+
 <script src="/static/scripts/jquery-1.10.2.js"></script>
 <script type="text/javascript">
     $(function () {
