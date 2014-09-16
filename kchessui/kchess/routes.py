@@ -84,8 +84,8 @@ def login():
                                year = datetime.now().year)
     username = request.form.get('username')
     password = request.form.get('password')
-    user = User.query.filter_by(username=username, password=password).first()
-    if user is None:
+    user = User.query.filter_by(username=username).first()
+    if user is None or user.verify_password(password) is False:
         flash('Invalid username or password')
         return render_template('login.html', 
                                year = datetime.now().year)
