@@ -29,6 +29,9 @@ class User(db.Model):
     def  verify_password(self, password):
         return crypt_ctx.verify(password, self.hash_password)
 
+    def set_password(self, password):
+        self.hash_password = crypt_ctx.encrypt(password)
+
     def is_authenticated(self):
         return True
  

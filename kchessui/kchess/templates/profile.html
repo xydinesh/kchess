@@ -1,0 +1,40 @@
+﻿{% extends "layout.html" %}
+
+{%block content %}
+<div class="col-lg-offset-2">
+    <form id="password-form" action="/change_password" method="post" name="form-signup">
+        <div class="modal-body">
+            <label for="password">Old Password</label>
+            <input type="password" class="form-control" name="old_password" id="old_password" placeholder="old password" />
+            <label for="password">New Password</label>
+            <input type="password" class="form-control" name="new_password" id="new_password" placeholder="new password" />
+            <label for="password">Confirm Password</label>
+            <input type="password" class="form-control" name="confirm_password" id="confirm_password" placeholder="confirm password" />
+        </div>
+        <button type="submit" value="submit" class="btn btn-primary">
+            Submit
+        </button>
+
+    </form>
+</div>
+<script src="/static/scripts/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('password-form').on('submit', function (e) {
+            e.defaultPrevented;
+            $.ajax({
+                url: "/change_password",
+                type: "POST",
+                data: $('password-form').serialize(),
+                success: function (data) {
+                    console.debug("Successfully submitted.")
+                },
+                error: function (xhr, status, errorThorwn) {
+                    console.debug(status)
+                }
+            });
+        });
+    });
+</script>
+
+{% endblock %}

@@ -91,8 +91,32 @@ def login():
                                year = datetime.now().year)
     flash('Login successful')
     login_user(user)
+    g.user = user
     return redirect(request.args.get('next') or url_for('home'))
  
+@app.route('/change_password', methods=['GET', 'POST'])
+def change_password():
+    if request.method == 'GET':
+        return render_template('profile.html',
+                               year = datetime.now().year)
+    old_password = request.form.get('old_password')
+    new_password = request.form.get('new_password')
+    conf_password = request.form.get('confirm_password')
+
+    if new_password != conf_password:
+        flash('New password does not match with confirm password')
+        return render_template('profile.html', 
+                               year = datetime.now().year)
+    user = User.query.filter_by(username=g.user.username).first()
+    if user is None or user.verify_password(old_password) is False:
+        flash('Invalid username or password')
+        return render_template('profile.html', 
+                               year = datetime.now().year)
+    user.set_password(new_password)
+    db.session.commit()
+    flash('Password change successful')
+    return redirect(request.args.get('next') or url_for('home'))
+
 @app.route('/signup')
 def signup():
     return render_template('signup.html',                          

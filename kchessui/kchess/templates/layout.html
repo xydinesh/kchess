@@ -28,6 +28,7 @@
                     {% if g.user.is_authenticated()%}
                     <li><a href="{{ url_for('summary')}}">Summary</a></li>
                     <li><a href="{{ url_for('report')}}">Report</a></li>
+                    <li><a href="{{ url_for('change_password')}}">Profile</a></li>
                     <li><a href="{{ url_for('logout')}}">Logout</a></li>
                     {% endif %}
                     {% if not g.user.is_authenticated() %}
@@ -38,6 +39,18 @@
             </div>
         </div>
     </div>
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div class="alert alert-info">
+        <ul class=flashes>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+    {% endwith %}
 
     <div class="container body-content">
         {% block content %}{% endblock %}

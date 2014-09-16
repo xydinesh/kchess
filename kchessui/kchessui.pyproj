@@ -84,6 +84,7 @@
     <Content Include="kchess\static\scripts\_references.js" />
     <Content Include="kchess\static\src\kchess.js" />
     <Content Include="kchess\static\src\p.js" />
+    <Content Include="kchess\templates\profile.html" />
     <Content Include="requirements.txt" />
     <Content Include="kchess\templates\about.html" />
     <Content Include="kchess\templates\contact.html" />
